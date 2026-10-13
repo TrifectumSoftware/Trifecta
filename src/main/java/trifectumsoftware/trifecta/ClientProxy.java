@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package trifectumsoftware.trifecta;
 
 public class ClientProxy extends CommonProxy {
 

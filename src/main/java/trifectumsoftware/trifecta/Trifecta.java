@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package trifectumsoftware.trifecta;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,13 +10,16 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = MyMod.MODID, version = Tags.VERSION, name = "MyMod", acceptedMinecraftVersions = "[1.7.10]")
-public class MyMod {
+@Mod(modid = Trifecta.MODID, version = Tags.VERSION, name = Trifecta.NAME, acceptedMinecraftVersions = "[1.7.10]")
+public class Trifecta {
 
-    public static final String MODID = "mymodid";
+    public static final String MODID = "trifecta";
+    public static final String NAME = "Trifecta";
     public static final Logger LOG = LogManager.getLogger(MODID);
 
-    @SidedProxy(clientSide = "com.myname.mymodid.ClientProxy", serverSide = "com.myname.mymodid.CommonProxy")
+    @SidedProxy(
+        clientSide = "trifectumsoftware.trifecta.ClientProxy",
+        serverSide = "trifectumsoftware.trifecta.CommonProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler

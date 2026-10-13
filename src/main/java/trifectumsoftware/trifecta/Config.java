@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package trifectumsoftware.trifecta;
 
 import java.io.File;
 
