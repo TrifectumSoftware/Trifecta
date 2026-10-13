@@ -6,12 +6,16 @@ import net.minecraftforge.common.config.Configuration;
 
 public class Config {
 
-    public static String greeting = "Hello World";
+    public static boolean strictScripts = true;
 
     public static void synchronizeConfiguration(File configFile) {
         Configuration configuration = new Configuration(configFile);
 
-        greeting = configuration.getString("greeting", Configuration.CATEGORY_GENERAL, greeting, "How shall I greet?");
+        strictScripts = configuration.getBoolean(
+            "strictScripts",
+            Configuration.CATEGORY_GENERAL,
+            strictScripts,
+            "If true, a script that fails to load aborts startup instead of being skipped");
 
         if (configuration.hasChanged()) {
             configuration.save();

@@ -1,0 +1,26 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+configurations {
+    groovyRuntime {
+        canBeConsumed = false
+        canBeResolved = true
+    }
+}
+
+dependencies {
+    groovyRuntime("org.apache.groovy:groovy:4.0.33")
+}
+
+def relocatedGroovy = tasks.register('relocatedGroovy', ShadowJar) {
+    description = 'Relocates the embedded Groovy out of the FML-excluded org.apache.* prefix'
+    configurations = [project.configurations.groovyRuntime]
+    archiveBaseName.set('groovy-relocated')
+    archiveVersion.set('4.0.33')
+    archiveClassifier.set('')
+    destinationDirectory.set(layout.buildDirectory.dir('relocated'))
+    relocate 'org.apache.groovy', 'trifectumsoftware.trifecta.compat.antlr4'
+}
+
+dependencies {
+    shadowImplementation(files(relocatedGroovy))
+}
